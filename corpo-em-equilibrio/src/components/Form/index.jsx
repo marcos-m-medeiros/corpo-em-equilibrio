@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import ResultImc from "./ResultIMC";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Keyboard,
+} from "react-native";
+import ResultImc from "./ResultImc";
 import styles from "./style";
 
 export default function Form() {
@@ -28,6 +34,7 @@ export default function Form() {
       setWeight(null);
       setMessageImc("O seu índice de massa corporal (IMC) é:");
       setTextButton("Calcular Novamente");
+      Keyboard.dismiss(); // Recolhe o teclado
       return;
     }
     setImc(null);
