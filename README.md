@@ -8,6 +8,8 @@ Este projeto React Native é uma calculadora de Índice de Massa Corporal (IMC).
 - Exibir mensagem de resultado do IMC.
 - Recalcular ou limpar campos facilmente.
 
+## Representação Visual
+
 <p align="center">
   <img src="imagem.jpeg/" alt="Representação visual da aplicação" width="300" height="600">
 </p>
