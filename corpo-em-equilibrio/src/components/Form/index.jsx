@@ -48,7 +48,7 @@ export default function Form() {
         <TextInput
           onChangeText={setWeight}
           value={weight}
-          placeholder="Ex. 75.365"
+          placeholder="Ex. 75.3"
           keyboardType="numeric"
         />
         <Button onPress={() => validationImc()} title={textButton} />
