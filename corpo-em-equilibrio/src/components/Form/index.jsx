@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Keyboard,
   Vibration,
+  Pressable,
 } from "react-native";
 import ResultImc from "./ResultImc";
 import styles from "./style";
@@ -43,7 +44,7 @@ export default function Form() {
       setWeight(null);
       setMessageImc("O seu índice de massa corporal (IMC) é:");
       setTextButton("Calcular Novamente");
-      Keyboard.dismiss(); // Recolhe o teclado
+      Keyboard.dismiss();
       setErrorMessage(null);
       return;
     }
@@ -54,7 +55,7 @@ export default function Form() {
   }
 
   return (
-    <View style={styles.formContext}>
+    <Pressable onPress={Keyboard.dismiss} style={styles.formContext}>
       <View style={styles.form}>
         <Text style={styles.formLabel}>Altura</Text>
         <Text style={styles.errorMessage}>{errorMessage}</Text>
@@ -84,6 +85,6 @@ export default function Form() {
         </TouchableOpacity>
       </View>
       <ResultImc messageResultImc={messageImc} resultImc={imc} />
-    </View>
+    </Pressable>
   );
 }

@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   textTitle: {
-    color: "#FF0043",
+    color: "#91ac9b",
     fontSize: 24,
     fontWeight: "bold",
   },

@@ -11,12 +11,12 @@ const styles = StyleSheet.create({
   },
   numberImc: {
     fontSize: 48,
-    color: "#FF0043",
+    color: "#91ac9b",
     fontWeight: "bold",
   },
   information: {
     fontSize: 18,
-    color: "#FF0043",
+    color: "#a9c3b6",
     fontWeight: "bold",
   },
   boxShareButton: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   shared: {
-    backgroundColor: "#1877f2",
+    backgroundColor: "#729bad",
     borderRadius: 50,
     paddingBottom: 5,
     paddingTop: 5,
