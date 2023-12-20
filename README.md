@@ -2,23 +2,10 @@
 
 Este é um projeto de aplicativo React Native para calcular o Índice de Massa Corporal (IMC) com várias funcionalidades úteis. A aplicação permite aos usuários inserir informações como altura, peso e idade para calcular o IMC, além de oferecer funcionalidades adicionais. Abaixo estão as principais funcionalidades do projeto:
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="img1.jpeg" width="300" />
-      <br />
-      Legenda da Imagem 1
-    </td>
-    <td align="center">
-      <img src="img2.jpeg" width="300" />
-      <br />
-      Legenda da Imagem 2
-    </td>
-  </tr>
-</table>
-
-
-
+<div style="display: flex; justify-content: center;">
+  <img src="img1.jpeg" width="300" style="margin: 0 10px;" />
+  <img src="img2.jpeg" width="300" style="margin: 0 10px;" />
+</div>
 
 ## Funcionalidades
 
