@@ -71,7 +71,7 @@ export default function Form(props) {
       imcCalculator();
       setHeight("");
       setWeight("");
-      setGender("");
+      setGender("male");
       setAge("");
       setMessageImc("O seu índice de massa corporal (IMC) é:");
       setTextButton("Calcular Novamente");
@@ -132,7 +132,7 @@ export default function Form(props) {
             onChangeText={setHeight}
             value={height}
             placeholder="Ex: 165"
-            inputMode="numeric"
+            inputMode="decimal"
           />
           <Text style={styles.formLabel}>Peso</Text>
           <Text style={styles.errorMessage}>{errorWeightMessage}</Text>
@@ -141,7 +141,7 @@ export default function Form(props) {
             onChangeText={setWeight}
             value={weight}
             placeholder="Ex: 62,5"
-            inputMode="numeric"
+            inputMode="decimal"
           />
           <Text style={styles.formLabel}>Idade</Text>
           <Text style={styles.errorMessage}>{errorAgeMessage}</Text>
@@ -150,7 +150,7 @@ export default function Form(props) {
             onChangeText={setAge}
             value={age}
             placeholder="Ex: 23"
-            inputMode="numeric"
+            inputMode="decimal"
           />
           <Pressable
             style={styles.buttonCalculator}
