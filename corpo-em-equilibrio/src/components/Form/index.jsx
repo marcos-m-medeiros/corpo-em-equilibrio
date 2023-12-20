@@ -38,7 +38,7 @@ export default function Form(props) {
   }
 
   function validationImc() {
-    //console.log(imcList);
+    console.log(imcList);
     if (weight != null && height != null) {
       imcCalculator();
       setHeight(null);
@@ -84,23 +84,6 @@ export default function Form(props) {
           >
             <Text style={styles.textButtonCalculator}>{textButton}</Text>
           </TouchableOpacity>
-          <FlatList
-            style={styles.listImcs}
-            data={imcList.reverse()}
-            renderItem={({ item }) => {
-              return (
-                <Text style={styles.resultImcItem}>
-                  <Text style={styles.textResultItemList}>
-                    Resultado IMC ={" "}
-                  </Text>
-                  {item.imc}
-                </Text>
-              );
-            }}
-            keyExtractor={(item) => {
-              item.id;
-            }}
-          />
         </Pressable>
       ) : (
         <View style={styles.exhibitionResultImc}>
@@ -115,6 +98,22 @@ export default function Form(props) {
           </TouchableOpacity>
         </View>
       )}
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        style={styles.listImcs}
+        data={imcList.reverse()}
+        renderItem={({ item }) => {
+          return (
+            <Text style={styles.resultImcItem}>
+              <Text style={styles.textResultItemList}>Resultado IMC = </Text>
+              {item.imc}
+            </Text>
+          );
+        }}
+        keyExtractor={(item) => {
+          item.id;
+        }}
+      />
     </View>
   );
 }

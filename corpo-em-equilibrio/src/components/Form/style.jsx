@@ -51,6 +51,22 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "50%",
   },
+  listImcs: {
+    marginTop: 20,
+  },
+  resultImcItem: {
+    fontSize: 26,
+    color: "#91AC9B",
+    height: 50,
+    width: "100%",
+    paddingRight: 20,
+    fontWeight: "bold",
+  },
+  textResultItemList: {
+    fontSize: 16,
+    color: "#A9C3B6",
+    fontWeight: "normal"
+  },
 });
 
 export default styles;
