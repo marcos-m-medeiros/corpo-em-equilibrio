@@ -35,6 +35,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingHorizontal: 30,
   },
+  classificationImc: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 10,
+    marginBottom: 20,
+    color: "#444",
+  },
+  informativeMessage: {
+    fontSize: 16,
+    color: "#666",
+    marginVertical: 10,
+    textAlign: "center",
+    margin: 15,
+  },
 });
 
 export default styles;

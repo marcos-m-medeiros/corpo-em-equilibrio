@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    paddingTop: 30,
+    paddingTop: 2,
   },
   form: {
     width: "90%",
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   exhibitionResultImc: {
     width: "100%",
-    height: "50%",
+    height: "55%",
   },
   listImcs: {
     marginTop: 20,
@@ -63,9 +63,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   textResultItemList: {
-    fontSize: 16,
+    fontSize: 18,
     color: "#A9C3B6",
-    fontWeight: "normal",
+    fontWeight: "600",
   },
   removeImcButton: {
     backgroundColor: "#ff6961",
@@ -84,14 +84,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: 20,
     width: "90%",
-    marginLeft: "auto", 
-    marginRight: "auto", 
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 
   genderButton: {
     flex: 1,
     borderRadius: 50,
-    backgroundColor: "#cddfdf", // Cor de fundo
+    backgroundColor: "#cddfdf",
     paddingVertical: 14,
     marginHorizontal: 5,
     alignItems: "center",
@@ -99,11 +99,11 @@ const styles = StyleSheet.create({
   },
 
   selectedGenderButton: {
-    backgroundColor: "#7ba7ba", // Cor de fundo quando selecionado
+    backgroundColor: "#7ba7ba",
   },
 
   genderButtonText: {
-    color: "#fff", // Cor do texto
+    color: "#fff",
     fontSize: 16,
   },
 });

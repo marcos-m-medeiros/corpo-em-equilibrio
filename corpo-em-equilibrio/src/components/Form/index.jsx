@@ -183,7 +183,7 @@ export default function Form(props) {
           <View style={styles.resultImcItemContainer}>
             <Text style={styles.resultImcItem}>
               <Text style={styles.textResultItemList}>Resultado IMC = </Text>
-              {item.imc}
+              {item.imc} kg/m²
             </Text>
             {textButton === "Calcular" && (
               <TouchableOpacity
