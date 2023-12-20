@@ -23,7 +23,10 @@ export default function Form(props) {
   const [errorHeightMessage, setErrorHeightMessage] = useState(null);
   const [errorWeightMessage, setErrorWeightMessage] = useState(null);
   const [imcList, setImcList] = useState([]);
-  const [gender, setGender] = useState(null);
+  const [gender, setGender] = useState("male");
+  const [age, setAge] = useState(null);
+  const [errorAgeMessage, setErrorAgeMessage] = useState(null);
+  const [isFirstTime, setIsFirstTime] = useState(true);
 
   function selectGender(selectedGender) {
     setGender(selectedGender);
@@ -65,25 +68,31 @@ export default function Form(props) {
   }
 
   function validationImc() {
-    if (weight !== null && height !== null) {
+    if (weight !== null && height !== null && age !== null) {
       imcCalculator();
       setHeight(null);
       setWeight(null);
+      setGender(null);
+      setAge(null);
       setMessageImc("O seu índice de massa corporal (IMC) é:");
       setTextButton("Calcular Novamente");
       setErrorHeightMessage(null);
       setErrorWeightMessage(null);
+      setErrorAgeMessage(null);
+      setIsFirstTime(true);
     } else {
       // Verifica se é a primeira vez antes de exibir mensagens de erro
-      if (textButton !== "Calcular Novamente") {
+      if (textButton !== "Calcular Novamente" && isFirstTime) {
         setErrorHeightMessage(height === null ? "Campo obrigatório*" : null);
         setErrorWeightMessage(weight === null ? "Campo obrigatório*" : null);
+        setErrorAgeMessage(age === null ? "Campo obrigatório*" : null);
+        setIsFirstTime(false);
         verificationImc();
       }
 
       setImc(null);
       setTextButton("Calcular");
-      setMessageImc("Informe a sua altura e peso...");
+      setMessageImc("Informe a sua altura, peso, gênero e idade...");
     }
   }
 
@@ -133,6 +142,15 @@ export default function Form(props) {
             onChangeText={setWeight}
             value={weight}
             placeholder="Ex: 62,5"
+            keyboardType="numeric"
+          />
+          <Text style={styles.formLabel}>Idade</Text>
+          <Text style={styles.errorMessage}>{errorAgeMessage}</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setAge}
+            value={age}
+            placeholder="Ex: 23"
             keyboardType="numeric"
           />
           <TouchableOpacity

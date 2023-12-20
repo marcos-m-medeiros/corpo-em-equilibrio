@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   form: {
-    width: "100%",
+    width: "90%",
   },
   formLabel: {
     color: "#729bad",
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f6f6f6",
     color: "#a7c3ce",
     height: 40,
-    margin: 12,
+    margin: 10,
     paddingLeft: 10,
   },
   buttonCalculator: {
