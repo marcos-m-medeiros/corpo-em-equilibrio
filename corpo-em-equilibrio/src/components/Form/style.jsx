@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    paddingTop: 2,
+    paddingTop: 4,
   },
   form: {
     width: "90%",
@@ -55,15 +55,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   resultImcItem: {
-    fontSize: 26,
+    fontSize: 18,
     color: "#91AC9B",
     height: 50,
     width: "100%",
     paddingRight: 20,
     fontWeight: "bold",
+    paddingTop: 22,
   },
   textResultItemList: {
-    fontSize: 18,
+    fontSize: 16,
     color: "#A9C3B6",
     fontWeight: "600",
   },

@@ -1,11 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Image } from "react-native";
 import styles from "./style";
 
 export default function Title() {
   return (
     <View style={styles.boxTitle}>
-      <Text style={styles.textTitle}>Corpo em Equilíbrio</Text>
+      <Image
+        source={require("../../../assets/logo.png")}
+        style={styles.logoImage}
+      />
     </View>
   );
 }
