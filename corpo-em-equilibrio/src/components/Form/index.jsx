@@ -20,33 +20,34 @@ export default function Form(props) {
   );
   const [imc, setImc] = useState(null);
   const [textButton, setTextButton] = useState("Calcular");
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [errorHeightMessage, setErrorHeightMessage] = useState(null);
+  const [errorWeightMessage, setErrorWeightMessage] = useState(null);
   const [imcList, setImcList] = useState([]);
 
   function imcCalculator() {
-    let heightFormat = height.replace(",", ".");
-    let totalImc = (weight / (heightFormat * heightFormat)).toFixed(2);
+    const heightFormat = height.replace(",", ".");
+    const totalImc = (weight / (heightFormat * heightFormat)).toFixed(2);
     setImcList((arr) => [...arr, { id: new Date().getTime(), imc: totalImc }]);
     setImc(totalImc);
   }
 
   function verificationImc() {
-    if (imc == null) {
-      Vibration.vibrate();
-      setErrorMessage("Campo obrigatório*");
-    }
+    Vibration.vibrate();
   }
 
   function validationImc() {
-    console.log(imcList);
-    if (weight != null && height != null) {
+    if (weight !== null && height !== null) {
       imcCalculator();
       setHeight(null);
       setWeight(null);
       setMessageImc("O seu índice de massa corporal (IMC) é:");
       setTextButton("Calcular Novamente");
-      setErrorMessage(null);
+      setErrorHeightMessage(null);
+      setErrorWeightMessage(null);
     } else {
+      if (height === null) setErrorHeightMessage("Campo obrigatório*");
+      if (weight === null) setErrorWeightMessage("Campo obrigatório*");
+
       verificationImc();
       setImc(null);
       setTextButton("Calcular");
@@ -56,10 +57,10 @@ export default function Form(props) {
 
   return (
     <View style={styles.formContext}>
-      {imc == null ? (
+      {imc === null ? (
         <Pressable onPress={Keyboard.dismiss} style={styles.form}>
           <Text style={styles.formLabel}>Altura</Text>
-          <Text style={styles.errorMessage}>{errorMessage}</Text>
+          <Text style={styles.errorMessage}>{errorHeightMessage}</Text>
           <TextInput
             style={styles.input}
             onChangeText={setHeight}
@@ -68,7 +69,7 @@ export default function Form(props) {
             keyboardType="numeric"
           />
           <Text style={styles.formLabel}>Peso</Text>
-          <Text style={styles.errorMessage}>{errorMessage}</Text>
+          <Text style={styles.errorMessage}>{errorWeightMessage}</Text>
           <TextInput
             style={styles.input}
             onChangeText={setWeight}
@@ -102,17 +103,13 @@ export default function Form(props) {
         showsVerticalScrollIndicator={false}
         style={styles.listImcs}
         data={imcList.reverse()}
-        renderItem={({ item }) => {
-          return (
-            <Text style={styles.resultImcItem}>
-              <Text style={styles.textResultItemList}>Resultado IMC = </Text>
-              {item.imc}
-            </Text>
-          );
-        }}
-        keyExtractor={(item) => {
-          item.id;
-        }}
+        renderItem={({ item }) => (
+          <Text style={styles.resultImcItem}>
+            <Text style={styles.textResultItemList}>Resultado IMC = </Text>
+            {item.imc}
+          </Text>
+        )}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
