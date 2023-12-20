@@ -157,10 +157,15 @@ export default function Form(props) {
             onChangeText={setAge}
             value={age}
             placeholder="Ex: 23"
-            inputMode="decimal"
+            inputMode="numeric"
           />
           <Pressable
-            style={styles.buttonCalculator}
+            style={({ pressed }) => [
+              styles.buttonCalculator,
+              {
+                opacity: pressed ? 0.5 : 1,
+              },
+            ]}
             onPress={() => {
               validationImc();
             }}
@@ -172,7 +177,12 @@ export default function Form(props) {
         <View style={styles.exhibitionResultImc}>
           <ResultImc messageResultImc={messageImc} resultImc={imc} />
           <Pressable
-            style={styles.buttonCalculator}
+            style={({ pressed }) => [
+              styles.buttonCalculator,
+              {
+                opacity: pressed ? 0.5 : 1,
+              },
+            ]}
             onPress={() => {
               validationImc();
             }}

@@ -27,7 +27,15 @@ export default function ResultImc(props) {
           {`Classificação: ${classification}`}
         </Text>
         <Text style={styles.informativeMessage}>{informativeMessage}</Text>
-        <Pressable onPress={onShare} style={styles.shared}>
+        <Pressable
+          onPress={onShare}
+          style={({ pressed }) => [
+            styles.shared,
+            {
+              opacity: pressed ? 0.5 : 1,
+            },
+          ]}
+        >
           <Text style={styles.sharedText}>Compartilhar</Text>
         </Pressable>
       </View>
