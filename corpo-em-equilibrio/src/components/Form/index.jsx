@@ -3,29 +3,28 @@ import {
   View,
   Text,
   TextInput,
-  TouchableOpacity,
+  Pressable,
   Keyboard,
   Vibration,
-  Pressable,
   FlatList,
 } from "react-native";
 import ResultImc from "./ResultImc";
 import styles from "./style";
 
 export default function Form(props) {
-  const [height, setHeight] = useState(null);
-  const [weight, setWeight] = useState(null);
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
   const [messageImc, setMessageImc] = useState(
     "Informe a sua altura e peso..."
   );
-  const [imc, setImc] = useState(null);
+  const [imc, setImc] = useState("");
   const [textButton, setTextButton] = useState("Calcular");
-  const [errorHeightMessage, setErrorHeightMessage] = useState(null);
-  const [errorWeightMessage, setErrorWeightMessage] = useState(null);
+  const [errorHeightMessage, setErrorHeightMessage] = useState("");
+  const [errorWeightMessage, setErrorWeightMessage] = useState("");
   const [imcList, setImcList] = useState([]);
   const [gender, setGender] = useState("male");
-  const [age, setAge] = useState(null);
-  const [errorAgeMessage, setErrorAgeMessage] = useState(null);
+  const [age, setAge] = useState("");
+  const [errorAgeMessage, setErrorAgeMessage] = useState("");
   const [isFirstTime, setIsFirstTime] = useState(true);
 
   function selectGender(selectedGender) {
@@ -39,7 +38,7 @@ export default function Form(props) {
       heightFormat =
         parseFloat(heightWithDot) / (heightWithDot.includes(".") ? 1 : 100);
     } else {
-      heightFormat = null;
+      heightFormat = "";
     }
 
     if (isNaN(heightFormat)) {
@@ -68,29 +67,29 @@ export default function Form(props) {
   }
 
   function validationImc() {
-    if (weight !== null && height !== null && age !== null) {
+    if (weight !== "" && height !== "" && age !== "") {
       imcCalculator();
-      setHeight(null);
-      setWeight(null);
-      setGender(null);
-      setAge(null);
+      setHeight("");
+      setWeight("");
+      setGender("");
+      setAge("");
       setMessageImc("O seu índice de massa corporal (IMC) é:");
       setTextButton("Calcular Novamente");
-      setErrorHeightMessage(null);
-      setErrorWeightMessage(null);
-      setErrorAgeMessage(null);
+      setErrorHeightMessage("");
+      setErrorWeightMessage("");
+      setErrorAgeMessage("");
       setIsFirstTime(true);
     } else {
       // Verifica se é a primeira vez antes de exibir mensagens de erro
       if (textButton !== "Calcular Novamente" && isFirstTime) {
-        setErrorHeightMessage(height === null ? "Campo obrigatório*" : null);
-        setErrorWeightMessage(weight === null ? "Campo obrigatório*" : null);
-        setErrorAgeMessage(age === null ? "Campo obrigatório*" : null);
+        setErrorHeightMessage(height === "" ? "Campo obrigatório*" : "");
+        setErrorWeightMessage(weight === "" ? "Campo obrigatório*" : "");
+        setErrorAgeMessage(age === "" ? "Campo obrigatório*" : "");
         setIsFirstTime(false);
         verificationImc();
       }
 
-      setImc(null);
+      setImc("");
       setTextButton("Calcular");
       setMessageImc("Informe a sua altura, peso, gênero e idade...");
     }
@@ -104,10 +103,10 @@ export default function Form(props) {
 
   return (
     <View style={styles.formContext}>
-      {imc === null ? (
+      {imc === "" ? (
         <Pressable onPress={Keyboard.dismiss} style={styles.form}>
           <View style={styles.genderButtonsContainer}>
-            <TouchableOpacity
+            <Pressable
               style={[
                 styles.genderButton,
                 gender === "male" && styles.selectedGenderButton,
@@ -115,8 +114,8 @@ export default function Form(props) {
               onPress={() => selectGender("male")}
             >
               <Text style={styles.genderButtonText}>Homem</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            </Pressable>
+            <Pressable
               style={[
                 styles.genderButton,
                 gender === "female" && styles.selectedGenderButton,
@@ -124,7 +123,7 @@ export default function Form(props) {
               onPress={() => selectGender("female")}
             >
               <Text style={styles.genderButtonText}>Mulher</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <Text style={styles.formLabel}>Altura</Text>
           <Text style={styles.errorMessage}>{errorHeightMessage}</Text>
@@ -133,7 +132,7 @@ export default function Form(props) {
             onChangeText={setHeight}
             value={height}
             placeholder="Ex: 165"
-            keyboardType="numeric"
+            inputMode="numeric"
           />
           <Text style={styles.formLabel}>Peso</Text>
           <Text style={styles.errorMessage}>{errorWeightMessage}</Text>
@@ -142,7 +141,7 @@ export default function Form(props) {
             onChangeText={setWeight}
             value={weight}
             placeholder="Ex: 62,5"
-            keyboardType="numeric"
+            inputMode="numeric"
           />
           <Text style={styles.formLabel}>Idade</Text>
           <Text style={styles.errorMessage}>{errorAgeMessage}</Text>
@@ -151,28 +150,28 @@ export default function Form(props) {
             onChangeText={setAge}
             value={age}
             placeholder="Ex: 23"
-            keyboardType="numeric"
+            inputMode="numeric"
           />
-          <TouchableOpacity
+          <Pressable
             style={styles.buttonCalculator}
             onPress={() => {
               validationImc();
             }}
           >
             <Text style={styles.textButtonCalculator}>{textButton}</Text>
-          </TouchableOpacity>
+          </Pressable>
         </Pressable>
       ) : (
         <View style={styles.exhibitionResultImc}>
           <ResultImc messageResultImc={messageImc} resultImc={imc} />
-          <TouchableOpacity
+          <Pressable
             style={styles.buttonCalculator}
             onPress={() => {
               validationImc();
             }}
           >
             <Text style={styles.textButtonCalculator}>{textButton}</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       )}
       <FlatList
@@ -186,14 +185,14 @@ export default function Form(props) {
               {item.imc} kg/m²
             </Text>
             {textButton === "Calcular" && (
-              <TouchableOpacity
+              <Pressable
                 style={styles.removeImcButton}
                 onPress={() => {
                   removeImc(index);
                 }}
               >
                 <Text style={styles.removeImcButtonText}>Remover</Text>
-              </TouchableOpacity>
+              </Pressable>
             )}
           </View>
         )}

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Share } from "react-native";
+import { View, Text, Pressable, Share } from "react-native";
 import { getclassificationImc } from "../../utils";
 import styles from "./style";
 
@@ -27,9 +27,9 @@ export default function ResultImc(props) {
           {`Classificação: ${classification}`}
         </Text>
         <Text style={styles.informativeMessage}>{informativeMessage}</Text>
-        <TouchableOpacity onPress={onShare} style={styles.shared}>
+        <Pressable onPress={onShare} style={styles.shared}>
           <Text style={styles.sharedText}>Compartilhar</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>
   );
