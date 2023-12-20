@@ -25,10 +25,36 @@ export default function Form(props) {
   const [imcList, setImcList] = useState([]);
 
   function imcCalculator() {
-    const heightFormat = height.replace(",", ".");
-    const totalImc = (weight / (heightFormat * heightFormat)).toFixed(2);
-    setImcList((arr) => [...arr, { id: new Date().getTime(), imc: totalImc }]);
-    setImc(totalImc);
+    // Converte a altura para um número, tratando vírgula ou ponto
+    let heightFormat;
+    if (height) {
+      const heightWithDot = height.replace(",", ".");
+      heightFormat =
+        parseFloat(heightWithDot) / (heightWithDot.includes(".") ? 1 : 100);
+    } else {
+      heightFormat = null;
+    }
+
+    if (isNaN(heightFormat)) {
+      console.error("Erro ao converter altura para metros");
+      return;
+    }
+
+    const totalImc = weight / (heightFormat * heightFormat);
+
+    if (isNaN(totalImc) || !isFinite(totalImc)) {
+      console.error("Erro no cálculo do IMC");
+      return;
+    }
+
+    // Arredonda o resultado para duas casas decimais usando o método toFixed
+    const roundedImc = parseFloat(totalImc.toFixed(2));
+
+    setImcList((arr) => [
+      ...arr,
+      { id: new Date().getTime(), imc: roundedImc },
+    ]);
+    setImc(roundedImc); // Não é necessário transformar em string aqui
   }
 
   function verificationImc() {
