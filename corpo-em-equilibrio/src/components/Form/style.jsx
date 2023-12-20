@@ -65,7 +65,19 @@ const styles = StyleSheet.create({
   textResultItemList: {
     fontSize: 16,
     color: "#A9C3B6",
-    fontWeight: "normal"
+    fontWeight: "normal",
+  },
+  removeImcButton: {
+    backgroundColor: "#ff6961",
+    borderRadius: 10,
+    padding: 5,
+    marginTop: 5,
+    alignItems: "center",
+  },
+
+  removeImcButtonText: {
+    color: "#fff",
+    fontSize: 12,
   },
 });
 

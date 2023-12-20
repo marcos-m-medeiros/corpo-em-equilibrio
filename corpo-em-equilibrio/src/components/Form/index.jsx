@@ -82,6 +82,12 @@ export default function Form(props) {
     }
   }
 
+  function removeImc(index) {
+    const newList = [...imcList];
+    newList.splice(index, 1); // Remove o item no índice especificado
+    setImcList(newList);
+  }
+
   return (
     <View style={styles.formContext}>
       {imc === null ? (
@@ -130,11 +136,23 @@ export default function Form(props) {
         showsVerticalScrollIndicator={false}
         style={styles.listImcs}
         data={imcList.reverse()}
-        renderItem={({ item }) => (
-          <Text style={styles.resultImcItem}>
-            <Text style={styles.textResultItemList}>Resultado IMC = </Text>
-            {item.imc}
-          </Text>
+        renderItem={({ item, index }) => (
+          <View style={styles.resultImcItemContainer}>
+            <Text style={styles.resultImcItem}>
+              <Text style={styles.textResultItemList}>Resultado IMC = </Text>
+              {item.imc}
+            </Text>
+            {textButton === "Calcular" && (
+              <TouchableOpacity
+                style={styles.removeImcButton}
+                onPress={() => {
+                  removeImc(index);
+                }}
+              >
+                <Text style={styles.removeImcButtonText}>Remover</Text>
+              </TouchableOpacity>
+            )}
+          </View>
         )}
         keyExtractor={(item) => item.id.toString()}
       />
