@@ -46,7 +46,14 @@ export default function Form(props) {
       return;
     }
 
-    const totalImc = weight / (heightFormat * heightFormat);
+    const weightNumber = parseFloat(weight); // Convertendo weight para número
+
+    if (isNaN(weightNumber)) {
+      console.error("Erro ao converter peso para número");
+      return;
+    }
+
+    const totalImc = weightNumber / (heightFormat * heightFormat);
 
     if (isNaN(totalImc) || !isFinite(totalImc)) {
       console.error("Erro no cálculo do IMC");
