@@ -25,7 +25,6 @@ export default function Form(props) {
   const [imcList, setImcList] = useState([]);
 
   function imcCalculator() {
-    // Converte a altura para um número, tratando vírgula ou ponto
     let heightFormat;
     if (height) {
       const heightWithDot = height.replace(",", ".");
@@ -47,14 +46,13 @@ export default function Form(props) {
       return;
     }
 
-    // Arredonda o resultado para duas casas decimais usando o método toFixed
     const roundedImc = parseFloat(totalImc.toFixed(2));
 
     setImcList((arr) => [
       ...arr,
       { id: new Date().getTime(), imc: roundedImc },
     ]);
-    setImc(roundedImc); // Não é necessário transformar em string aqui
+    setImc(roundedImc);
   }
 
   function verificationImc() {
