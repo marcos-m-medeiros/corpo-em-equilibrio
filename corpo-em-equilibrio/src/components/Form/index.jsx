@@ -45,10 +45,13 @@ export default function Form(props) {
       setErrorHeightMessage(null);
       setErrorWeightMessage(null);
     } else {
-      if (height === null) setErrorHeightMessage("Campo obrigatório*");
-      if (weight === null) setErrorWeightMessage("Campo obrigatório*");
+      // Verifica se é a primeira vez antes de exibir mensagens de erro
+      if (textButton !== "Calcular Novamente") {
+        setErrorHeightMessage(height === null ? "Campo obrigatório*" : null);
+        setErrorWeightMessage(weight === null ? "Campo obrigatório*" : null);
+        verificationImc();
+      }
 
-      verificationImc();
       setImc(null);
       setTextButton("Calcular");
       setMessageImc("Informe a sua altura e peso...");
