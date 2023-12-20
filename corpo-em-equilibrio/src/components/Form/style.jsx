@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 20,
+    width: "90%",
+    marginLeft: "auto", 
+    marginRight: "auto", 
   },
 
   genderButton: {
