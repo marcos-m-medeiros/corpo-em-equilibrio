@@ -23,6 +23,11 @@ export default function Form(props) {
   const [errorHeightMessage, setErrorHeightMessage] = useState(null);
   const [errorWeightMessage, setErrorWeightMessage] = useState(null);
   const [imcList, setImcList] = useState([]);
+  const [gender, setGender] = useState(null);
+
+  function selectGender(selectedGender) {
+    setGender(selectedGender);
+  }
 
   function imcCalculator() {
     let heightFormat;
@@ -92,13 +97,33 @@ export default function Form(props) {
     <View style={styles.formContext}>
       {imc === null ? (
         <Pressable onPress={Keyboard.dismiss} style={styles.form}>
+          <View style={styles.genderButtonsContainer}>
+            <TouchableOpacity
+              style={[
+                styles.genderButton,
+                gender === "male" && styles.selectedGenderButton,
+              ]}
+              onPress={() => selectGender("male")}
+            >
+              <Text style={styles.genderButtonText}>Homem</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.genderButton,
+                gender === "female" && styles.selectedGenderButton,
+              ]}
+              onPress={() => selectGender("female")}
+            >
+              <Text style={styles.genderButtonText}>Mulher</Text>
+            </TouchableOpacity>
+          </View>
           <Text style={styles.formLabel}>Altura</Text>
           <Text style={styles.errorMessage}>{errorHeightMessage}</Text>
           <TextInput
             style={styles.input}
             onChangeText={setHeight}
             value={height}
-            placeholder="Ex: 1.75"
+            placeholder="Ex: 165"
             keyboardType="numeric"
           />
           <Text style={styles.formLabel}>Peso</Text>
@@ -107,7 +132,7 @@ export default function Form(props) {
             style={styles.input}
             onChangeText={setWeight}
             value={weight}
-            placeholder="Ex: 75.3"
+            placeholder="Ex: 62,5"
             keyboardType="numeric"
           />
           <TouchableOpacity

@@ -79,6 +79,30 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 12,
   },
+  genderButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20,
+  },
+
+  genderButton: {
+    flex: 1,
+    borderRadius: 50,
+    backgroundColor: "#cddfdf", // Cor de fundo
+    paddingVertical: 14,
+    marginHorizontal: 5,
+    alignItems: "center",
+    marginBottom: 20,
+  },
+
+  selectedGenderButton: {
+    backgroundColor: "#7ba7ba", // Cor de fundo quando selecionado
+  },
+
+  genderButtonText: {
+    color: "#fff", // Cor do texto
+    fontSize: 16,
+  },
 });
 
 export default styles;
